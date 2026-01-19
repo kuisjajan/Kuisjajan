@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KuisJajan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="login-page" class="container">
+  <h1>✨ KuisJajan ✨</h1>
+  <p>Masukkan nama panggilanmu:</p>
+  <input type="text" id="username" placeholder="Contoh: Adik, Kakak..." maxlength="15" autocomplete="off" />
+  <br />
+  <button id="login-btn">Masuk & Mulai Belajar!</button>
+</div>
+
+<div id="dashboard" class="container">
+  <h2>Halo, <span id="user-display">...</span>!</h2>
+  <div class="card-grid">
+    <div class="card" onclick="showQuiz()">🎮 Mulai Quiz</div>
+    <div class="card" onclick="showProfile()">👤 Profil</div>
+    <div class="card" onclick="showRules()">⚠️ Peraturan</div>
+    <div class="card" onclick="showAbout()">ℹ️ Tentang</div>
+  </div>
+</div>
+
+<div id="rules-page" class="page-content">
+  <h3>📝 Peraturan Main</h3>
+  <ul style="margin:15px 0;line-height:1.6;text-align:left;padding-left:20px;">
+    <li>Setiap sesi: <strong>5 soal</strong>, waktu 10 detik/soal.</li>
+    <li>Benar = <strong>20 poin</strong>, maks 100 poin/sesi.</li>
+    <li>Cooldown: <strong>2 hari</strong> sebelum main lagi.</li>
+    <li>Login tiap hari → streak naik → bonus hadiah!</li>
+    <li>100 poin = <span class="highlight">Rp1.000</span> (atau Rp2.000 jika streak ≥30 hari).</li>
+    <li><strong>Minimal penarikan: 500 poin</strong> (Rp10.000).</li>
+  </ul>
+  <div class="back-btn"><button onclick="hideAllPages()">← Kembali</button></div>
+</div>
+
+<div id="about-page" class="page-content">
+  <h3>❤️ Tentang Kami</h3>
+  <p style="margin-top:15px;line-height:1.6;text-align:left;">
+    Website ini dibuat oleh seorang CEO muda yang ingin memberikan uang jajan bagi keluarga dan tetangganya.
+    <br><br>
+    Tujuan utamanya: mengedukasi adik-adik yang masih sekolah melalui kuis seru dan cepat!
+    <br><br>
+    Setiap kali kamu bermain, kamu ikut mendukung misi kecil ini. Terima kasih! 🙏
+  </p>
+  <div class="back-btn"><button onclick="hideAllPages()">← Kembali</button></div>
+</div>
+
+<div id="profile-page" class="page-content">
+  <h3>👤 Profil Kamu</h3>
+  <div class="info-box">Nama: <span id="prof-name">-</span></div>
+  <div class="info-box">Total Poin: <span id="prof-points" class="highlight">0</span></div>
+  <div class="info-box">Streak Login: <span id="prof-streak" class="highlight">0</span> hari</div>
+  <div class="info-box">Terakhir Main: <span id="prof-last-quiz">Belum pernah</span></div>
+  <div class="info-box">Status Hadiah: <span id="prof-reward" class="highlight">Rp1.000 per 100 poin</span></div>
+  
+  <div class="info-box" style="background:rgba(255,204,0,0.2);color:#000;margin-top:15px;">
+    <strong>💡 Tata Cara Penarikan:</strong><br>
+    1. Screenshot halaman ini sebagai bukti<br>
+    2. Klik tombol di bawah → sistem akan:<br>
+    &nbsp;&nbsp;– Otomatis kurangi 500 poin<br>
+    &nbsp;&nbsp;– Kirim data ke CEO via WhatsApp<br>
+    3. Tunggu transfer dalam 3 hari kerja
+  </div>
+
+  <button class="whatsapp-btn" onclick="sendWithdrawalRequest()" id="claim-btn">
+    📲 Ajukan Penarikan (Min. 500 Poin)
+  </button>
+
+  <div class="info-box" style="background:rgba(0,200,100,0.2);color:#000;margin-top:10px;font-size:0.9rem;">
+    <strong>❤️ Catatan Penting:</strong><br>
+    - Tidak ada potongan biaya.<br>
+    - Donasi sukarela boleh, tapi TIDAK WAJIB.<br>
+    - Ini inisiatif pribadi, bukan bisnis.
+  </div>
+  
+  <div class="back-btn"><button onclick="hideAllPages()">← Kembali</button></div>
+</div>
+
+<div id="quiz-page" class="page-content">
+  <div id="timer">Waktu: 10 detik</div>
+  <div id="question">Loading...</div>
+  <div class="options" id="options"></div>
+  <div class="back-btn" style="margin-top:30px;"><button onclick="hideAllPages()">← Keluar Quiz</button></div>
+</div>
+
+<div class="marquee">
+  <span>💡 Website ini dikembangkan untuk memberikan uang jajan bagi keluarga dan tetanggaku. Terima kasih sudah bermain! 💡</span>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
